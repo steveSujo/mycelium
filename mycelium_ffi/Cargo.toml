@@ -1,0 +1,12 @@
+[package]
+name = "mycelium_ffi"
+version = "0.1.0"
+edition = "2024"
+description = "C FFI bindings for Mycelium gossip protocol"
+license = "MIT"
+repository = "https://github.com/yourusername/mycelium"
+keywords = ["ffi", "c-bindings", "p2p", "gossip"]
+categories = ["ffi", "network-programming"]
+[dependencies]
+mycelium_core = { path = "../mycelium_core" }
+tokio = { version = "1.0", features = ["full"] }

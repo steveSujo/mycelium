@@ -1,0 +1,15 @@
+/target
+/Cargo.lock
+**/*.rs.bk
+**/*.orig
+/.cargo
+/.rustup
+/.zed/
+**/tmp/
+**/node_a/
+**/node_b/
+**/~$*.docx
+**/*.docx
+**/report.docx
+**/mycelium_ffi/include/mycelium.h
+**/node_modules/

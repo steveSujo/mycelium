@@ -1,0 +1,36 @@
+[package]
+name = "mycelium_core"
+version = "0.1.0"
+edition = "2024"
+description = "Core gossip protocol and CRDT implementation for Mycelium P2P network"
+license = "MIT"
+repository = "https://github.com/yourusername/mycelium"
+keywords = ["p2p", "gossip", "crdt", "distributed", "peer-discovery"]
+categories = ["network-programming", "distributed-systems"]
+
+[[example]]
+name = "rust_node"
+path = "examples/rust_node.rs"
+
+[[example]]
+name = "tui_node"
+path = "examples/tui_node.rs"
+
+[dependencies]
+uuid = { version = "1.0", features = ["v4"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+crc32fast = "1.3"
+tokio = { version = "1.0", features = ["full"] }
+log = "0.4"
+env_logger = "0.11"
+rand = "0.8"
+socket2 = "0.5"
+thiserror = "1.0"
+chrono = "0.4"
+
+[dev-dependencies]
+tempfile = "3.10"
+ratatui = "0.28"
+crossterm = "0.28"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
