@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+env:
+  CARGO_TERM_COLOR: always
+  RUSTFLAGS: "--cfg tokio_allow_from_blocking_fd"
+
+jobs:
+  test:
+    name: Test & Verify
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Install Rust Stable
+      uses: dtolnay/rust-toolchain@stable
+      with:
+        components: rustfmt, clippy
+
+    - name: Cargo Check
+      run: cargo check --workspace --all-targets
+
+    - name: Clippy Lints
+      run: cargo clippy --workspace --all-targets -- -D warnings
+
+    - name: Run Unit Tests
+      run: cargo test --workspace --lib
+
+    - name: Run Integration Tests
+      run: cargo test --workspace --test integration_test -- --nocapture
