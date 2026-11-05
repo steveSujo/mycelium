@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 160" width="100%" height="100%" style="font-family: system-ui, -apple-system, sans-serif; background: #0b0f19; color: #f8fafc; border-radius: 12px;">
+  <defs>
+    <style>
+      .bg { fill: #0b0f19; }
+      .box { fill: #1e293b; stroke: #334155; stroke-width: 2; rx: 6; }
+      .accent-box { fill: #1e293b; stroke: #3b82f6; stroke-width: 2; rx: 6; }
+      .title { font-weight: 700; font-size: 15px; fill: #f8fafc; text-anchor: middle; }
+      .subtitle { font-size: 12px; fill: #94a3b8; text-anchor: middle; }
+      .byte-label { font-size: 11px; font-weight: 600; fill: #38bdf8; text-anchor: middle; }
+    </style>
+  </defs>
+
+  <rect width="100%" height="100%" class="bg" rx="12"/>
+
+  <text x="400" y="25" class="title" style="font-size: 16px;">Mycelium 16-Byte Binary Packet Header Layout</text>
+
+  <!-- Byte offsets row -->
+  <line x1="50" y1="50" x2="750" y2="50" stroke="#334155" stroke-width="1.5" />
+
+  <!-- Field 1: Magic (2 bytes) -->
+  <rect x="50" y="65" width="85" height="60" class="accent-box" />
+  <text x="92" y="90" class="title">Magic</text>
+  <text x="92" y="110" class="subtitle">0x4D59 ('MY')</text>
+  <text x="92" y="142" class="byte-label">Bytes 0–1</text>
+
+  <!-- Field 2: Version (1 byte) -->
+  <rect x="145" y="65" width="65" height="60" class="box" />
+  <text x="177" y="90" class="title">Ver</text>
+  <text x="177" y="110" class="subtitle">0x01</text>
+  <text x="177" y="142" class="byte-label">Byte 2</text>
+
+  <!-- Field 3: Opcode (1 byte) -->
+  <rect x="220" y="65" width="65" height="60" class="box" />
+  <text x="252" y="90" class="title">Op</text>
+  <text x="252" y="110" class="subtitle">0x01–0x05</text>
+  <text x="252" y="142" class="byte-label">Byte 3</text>
+
+  <!-- Field 4: Cluster Token (4 bytes) -->
+  <rect x="295" y="65" width="135" height="60" class="box" />
+  <text x="362" y="90" class="title">Cluster Token</text>
+  <text x="362" y="110" class="subtitle">32-bit Hash / Magic</text>
+  <text x="362" y="142" class="byte-label">Bytes 4–7</text>
+
+  <!-- Field 5: Payload Length (4 bytes) -->
+  <rect x="440" y="65" width="145" height="60" class="box" />
+  <text x="512" y="90" class="title">Payload Length</text>
+  <text x="512" y="110" class="subtitle">u32 Big-Endian</text>
+  <text x="512" y="142" class="byte-label">Bytes 8–11</text>
+
+  <!-- Field 6: Checksum (4 bytes) -->
+  <rect x="595" y="65" width="155" height="60" class="box" />
+  <text x="672" y="90" class="title">CRC32-C Checksum</text>
+  <text x="672" y="110" class="subtitle">Integrity Hash</text>
+  <text x="672" y="142" class="byte-label">Bytes 12–15</text>
+</svg>
